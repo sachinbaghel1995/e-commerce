@@ -1,0 +1,13 @@
+.headerCartButton {
+  border: 2px solid lightblue;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.headerCartButton span {
+  color: lightblue;
+  font-weight: bold;
+  font-size: 30px;
+  margin: 20px;
+  font-family: "Times New Roman", Times, serif;
+}
