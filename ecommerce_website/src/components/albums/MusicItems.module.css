@@ -23,3 +23,16 @@
   border-radius: 5px;
   margin-left: -120px;
 }
+
+.div button {
+  display: inline;
+  float: right;
+  margin-right: 70px;
+  margin-bottom: 30px;
+  margin-top: -10px;
+}
+
+.div button:hover {
+  background-color: lightblue;
+  color: black;
+}

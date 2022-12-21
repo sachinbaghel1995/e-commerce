@@ -1,13 +1,33 @@
-import React from 'react';
+import React, { useState,useContext }  from 'react';
 
 import classes from './HeaderCartButton.module.css';
+import Cart from '../cart/Cart';
+import cartContext from '../store/cart-context';
 
 const HeaderCartButton = () => {
+
+  const cartCtx = useContext(cartContext);
+
+  let cartQuantity = 0;
+
+  cartCtx.item.forEach((item) => {
+    cartQuantity += item.quantity;
+  })
+
+  const [showCartItem, setShowCartItem] = useState(false);
+
+  const cartItemHandler = () => {
+    setShowCartItem(true);
+  }
+
   return (
-    <div className={classes.headerCartButton}>
-      <span>Cart</span>
-      <span>0</span>
-    </div>
+    <React.Fragment>
+      <button className={classes.headerCartButton} onClick={cartItemHandler}>
+        <span>Cart</span>
+        <span>{cartQuantity}</span>
+      </button>
+      {showCartItem && <Cart />}
+    </React.Fragment>
   );
 };
 
