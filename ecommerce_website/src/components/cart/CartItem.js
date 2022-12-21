@@ -12,10 +12,11 @@ const CartItem = (props) => {
   const removeCartItemHandler = (title) => {
     cartCtx.removeItem(title);
     }
+
+    //console.log(props.item.imageUrl);
     
   return (
     <React.Fragment>
-
       <div className={classes.div}>
         <img src={props.item.imageUrl} alt='Music Album' />
         <span>{props.item.title}</span>

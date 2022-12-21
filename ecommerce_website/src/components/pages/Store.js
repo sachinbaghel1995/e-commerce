@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext }  from 'react';
 
 import classes from './Store.module.css';
 import MusicAlbums from '../albums/MusicAlbums';
-// import Cart from '../cart/Cart';
+import Cart from '../cart/Cart';
+import showCartContext from '../store/showCart-Context';
+
 
 const Store = (props) => {
   // const [showCartItem, setShowCartItem] = useState(false);
@@ -10,6 +12,8 @@ const Store = (props) => {
   // const cartItemHandler = () => {
   //   setShowCartItem(true);
   // };
+    
+  const showCartCtx = useContext(showCartContext);
 
   return (
     <section className={classes.section}>
@@ -17,6 +21,8 @@ const Store = (props) => {
       <MusicAlbums productList={props.productList} />
       {/* {showCartItem && <Cart />} */}
       {/* <button className={classes.button} onClick={cartItemHandler}>See the cart</button> */}
+      {showCartCtx.cartState && <Cart onClick={showCartCtx.hideCart}/>}
+      <button className={classes.button} onClick={showCartCtx.showCart}>See the cart</button>
     </section>
   );
 };

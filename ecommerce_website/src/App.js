@@ -8,6 +8,9 @@ import Home from './components/pages/Home';
 import Store from './components/pages/Store';
 import About from './components/pages/About';
 import Footer from './components/footer/Footer';
+import ContactUs from './components/pages/ContactUs';
+
+import { ShowCartContextProvider } from './components/store/showCart-Context';
 
 function App() {
   const productsArr = [
@@ -38,7 +41,10 @@ function App() {
 
   return (
     <React.Fragment>
-      <Header />
+      <ShowCartContextProvider>
+        <Header />
+      </ShowCartContextProvider>
+
       <Route path=''>
         <Redirect to='/home' />
       </Route>
@@ -46,12 +52,22 @@ function App() {
       <Route path='/home'>
         <Home />
       </Route>
-      <Route path='/store'>
-        <Store productList={productsArr} />
-      </Route>
+
+      <ShowCartContextProvider>
+        <Route path='/store'>
+          <Store productList={productsArr} />
+        </Route>
+      </ShowCartContextProvider>
+
       <Route path='/about'>
         <About />
-      </Route> <Footer />
+      </Route>
+
+      <Route path='/contact'>
+        <ContactUs />
+      </Route>
+      
+      <Footer />
     </React.Fragment>
   );
 }
