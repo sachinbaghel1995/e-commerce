@@ -38,8 +38,7 @@
 .heading span {
   font-size: 20px;
   font-weight: bold;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: sans-serif;
 }
 
 .item {
@@ -66,7 +65,7 @@
   margin: 25px;
   font-size: 25px;
   font-weight: bold;
-  font-family: "Times New Roman", Times, serif;
+  font-family: sans-serif;
 }
 
 .total div {
@@ -84,4 +83,15 @@
   background-color: aqua;
   border-radius: 5px;
   margin-top: 30px;
+}
+
+.delete {
+  padding: 0 20px 0 20px;
+  font-size: 30px;
+  border-radius: 5px;
+  background-color: #38f1b3;
+}
+
+.overlay button:active {
+  transform: scale(0.5);
 }

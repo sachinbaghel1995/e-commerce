@@ -1,9 +1,12 @@
 import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
 
 import './App.css';
 
 import Header from './components/header/Header';
-import Section from './components/section/Section';
+import Home from './components/pages/Home';
+import Store from './components/pages/Store';
+import About from './components/pages/About';
 import Footer from './components/footer/Footer';
 
 function App() {
@@ -36,8 +39,19 @@ function App() {
   return (
     <React.Fragment>
       <Header />
-      <Section productList={productsArr}/>
-      <Footer />
+      <Route path=''>
+        <Redirect to='/home' />
+      </Route>
+
+      <Route path='/home'>
+        <Home />
+      </Route>
+      <Route path='/store'>
+        <Store productList={productsArr} />
+      </Route>
+      <Route path='/about'>
+        <About />
+      </Route> <Footer />
     </React.Fragment>
   );
 }
