@@ -32,7 +32,7 @@ const cartReducer = (state, action) => {
     }
     else {
       // console.log('same');
-      updatedCartItem[cartItemIndex].quantity += 0.5;
+      updatedCartItem[cartItemIndex].quantity += 1;
 
       return {item: updatedCartItem, totalAmount: updatedAmount}
     }
@@ -55,7 +55,7 @@ const cartReducer = (state, action) => {
     }
     else {
 
-      updatedCartItem[cartItemIndex].quantity -= 0.5;
+      updatedCartItem[cartItemIndex].quantity -= 1;
 
       return {item: updatedCartItem, totalAmount: updatedAmount}
     }
