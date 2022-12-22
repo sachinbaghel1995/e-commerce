@@ -10,6 +10,7 @@ const Header = () => {
       <header className={classes.header}>
         <nav>
           <ul>
+            <li><NavLink activeClassName={classes.active} to='/login'>LOGIN</NavLink></li>
             <li><NavLink activeClassName={classes.active} to='/home'>HOME</NavLink></li>
             <li><NavLink activeClassName={classes.active} to='/store'>STORE</NavLink></li>
             <li><NavLink activeClassName={classes.active} to='/about'>ABOUT</NavLink></li>

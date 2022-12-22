@@ -10,9 +10,11 @@ import About from './components/pages/About';
 import Footer from './components/footer/Footer';
 import ContactUs from './components/pages/ContactUs';
 import ProductDetail from './components/pages/ProductDetail';
+import Login from './components/pages/Login';
 
 import { ShowCartContextProvider } from './components/store/showCart-Context';
 import { ProductContextProvider } from './components/store/product-context';
+import { CartContextProvider } from './components/store/cart-context';
 
 function App() {
   const productsArr = [
@@ -57,17 +59,26 @@ function App() {
 
       <Switch>
         <ProductContextProvider>
-          <ShowCartContextProvider>
-            <Route path='/store' exact>
-              <Store productList={productsArr} />
-            </Route>
-          </ShowCartContextProvider>
 
+        <CartContextProvider>
+            <ShowCartContextProvider>
+              <Header />
+              <Route path='/store' exact>
+                <Store productList={productsArr} />
+              </Route>
+            </ShowCartContextProvider>
+        </CartContextProvider>
+        
+    
           <Route path='/store/:productId'>
             <ProductDetail />
           </Route>
         </ProductContextProvider>
       </Switch>
+
+      <Route path='/login'>
+        <Login />
+      </Route>
 
       <Route path='/about'>
         <About />
