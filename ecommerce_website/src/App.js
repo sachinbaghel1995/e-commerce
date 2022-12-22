@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
 import './App.css';
@@ -11,12 +11,15 @@ import Footer from './components/footer/Footer';
 import ContactUs from './components/pages/ContactUs';
 import ProductDetail from './components/pages/ProductDetail';
 import Login from './components/pages/Login';
+import loginContext from './components/store/login-context';
 
 import { ShowCartContextProvider } from './components/store/showCart-Context';
 import { ProductContextProvider } from './components/store/product-context';
 import { CartContextProvider } from './components/store/cart-context';
 
 function App() {
+  const loginCtx = useContext(loginContext);
+
   const productsArr = [
     {
       title: 'Colors',
@@ -63,21 +66,23 @@ function App() {
         <CartContextProvider>
             <ShowCartContextProvider>
               <Header />
-              <Route path='/store' exact>
-                <Store productList={productsArr} />
+              <Route path='/product' exact>
+                {loginCtx.isloggedIn && <Store productList={productsArr} />}
+                {!loginCtx.isloggedIn && <Redirect to='/login'/>}
               </Route>
             </ShowCartContextProvider>
         </CartContextProvider>
         
     
-          <Route path='/store/:productId'>
+          <Route path='/product/:productId'>
             <ProductDetail />
           </Route>
         </ProductContextProvider>
       </Switch>
 
       <Route path='/login'>
-        <Login />
+      {!loginCtx.isloggedIn && <Login />}
+      {loginCtx.isloggedIn && <Redirect to='/home'/>}
       </Route>
 
       <Route path='/about'>
@@ -86,6 +91,10 @@ function App() {
 
       <Route path='/contact'>
         <ContactUs />
+      </Route>
+
+      <Route path='*'>
+        <Redirect to='home'/>
       </Route>
       
       <Footer />

@@ -39,3 +39,8 @@ header a.active {
   text-decoration: underline;
   color: lightblue;
 }
+
+.header li.login,
+li.logout {
+  right: 10%;
+}
