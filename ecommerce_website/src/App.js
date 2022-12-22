@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 
 import './App.css';
 
@@ -9,8 +9,10 @@ import Store from './components/pages/Store';
 import About from './components/pages/About';
 import Footer from './components/footer/Footer';
 import ContactUs from './components/pages/ContactUs';
+import ProductDetail from './components/pages/ProductDetail';
 
 import { ShowCartContextProvider } from './components/store/showCart-Context';
+import { ProductContextProvider } from './components/store/product-context';
 
 function App() {
   const productsArr = [
@@ -45,7 +47,7 @@ function App() {
         <Header />
       </ShowCartContextProvider>
 
-      <Route path=''>
+      <Route path='/' exact>
         <Redirect to='/home' />
       </Route>
 
@@ -53,11 +55,19 @@ function App() {
         <Home />
       </Route>
 
-      <ShowCartContextProvider>
-        <Route path='/store'>
-          <Store productList={productsArr} />
-        </Route>
-      </ShowCartContextProvider>
+      <Switch>
+        <ProductContextProvider>
+          <ShowCartContextProvider>
+            <Route path='/store' exact>
+              <Store productList={productsArr} />
+            </Route>
+          </ShowCartContextProvider>
+
+          <Route path='/store/:productId'>
+            <ProductDetail />
+          </Route>
+        </ProductContextProvider>
+      </Switch>
 
       <Route path='/about'>
         <About />

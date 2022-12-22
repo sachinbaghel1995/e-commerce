@@ -8,7 +8,7 @@
 }
 
 .headerCartButton:active {
-  transform: scale(0.95);
+  transform: scale(110%);
 }
 
 .headerCartButton span {
@@ -16,5 +16,5 @@
   font-weight: bold;
   font-size: 30px;
   margin: 20px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: sans-serif;
 }
