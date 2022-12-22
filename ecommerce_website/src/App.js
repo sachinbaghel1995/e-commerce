@@ -15,7 +15,7 @@ import loginContext from './components/store/login-context';
 
 import { ShowCartContextProvider } from './components/store/showCart-Context';
 import { ProductContextProvider } from './components/store/product-context';
-import { CartContextProvider } from './components/store/cart-context';
+// import { CartContextProvider } from './components/store/cart-context';
 
 function App() {
   const loginCtx = useContext(loginContext);
@@ -63,15 +63,14 @@ function App() {
       <Switch>
         <ProductContextProvider>
 
-        <CartContextProvider>
-            <ShowCartContextProvider>
-              <Header />
-              <Route path='/product' exact>
-                {loginCtx.isloggedIn && <Store productList={productsArr} />}
-                {!loginCtx.isloggedIn && <Redirect to='/login'/>}
-              </Route>
-            </ShowCartContextProvider>
-        </CartContextProvider>
+        <ShowCartContextProvider>
+        <ShowCartContextProvider>
+            <Route path='/product' exact>
+              {loginCtx.isloggedIn && <Store productList={productsArr} />}
+              {!loginCtx.isloggedIn && <Redirect to='/login' />}
+            </Route>
+          </ShowCartContextProvider>
+        </ShowCartContextProvider>
         
     
           <Route path='/product/:productId'>
@@ -93,10 +92,10 @@ function App() {
         <ContactUs />
       </Route>
 
-      <Route path='*'>
-        <Redirect to='home'/>
+      {/* <Route path='*'>
+        <Redirect to='home'/> 
       </Route>
-      
+       */}
       <Footer />
     </React.Fragment>
   );

@@ -4,13 +4,16 @@ import { NavLink} from 'react-router-dom';
 import classes from './Header.module.css';
 import HeaderCartButton from './HeaderCartButton';
 import loginContext from '../store/login-context';
+import cartContext from '../store/cart-context';
 
 const Header = () => {
 
   const loginCtx = useContext(loginContext);
+  const cartCtx = useContext(cartContext);
 
   const logoutHandler = () => {
     loginCtx.logout();
+    cartCtx.logoutCartHandler();
   }
 
   return (
@@ -19,12 +22,40 @@ const Header = () => {
         <nav>
           <ul>
             {/* <li><NavLink activeClassName={classes.active} to='/login'>LOGIN</NavLink></li> */}
-            <li><NavLink activeClassName={classes.active} to='/home'>HOME</NavLink></li>
-            <li><NavLink activeClassName={classes.active} to='/product'>STORE</NavLink></li>
-            <li><NavLink activeClassName={classes.active} to='/about'>ABOUT</NavLink></li>
-            <li><NavLink activeClassName={classes.active} to='/contact'>CONTACT</NavLink></li>
-            {!loginCtx.isloggedIn && <li className={classes.login}><NavLink activeClassName={classes.active} to='/login'>LOGIN</NavLink></li>}
-            {loginCtx.isloggedIn && <li className={classes.logout} onClick={logoutHandler}><NavLink activeClassName={classes.active} to='/login'>LOGOUT</NavLink></li>}
+            <li>
+              <NavLink activeClassName={classes.active} to='/home'>
+                HOME
+              </NavLink>
+            </li>
+            <li>
+              <NavLink activeClassName={classes.active} to='/product'>
+                PRODUCT
+              </NavLink>
+            </li>
+            <li>
+              <NavLink activeClassName={classes.active} to='/about'>
+                ABOUT
+              </NavLink>
+            </li>
+            <li>
+              <NavLink activeClassName={classes.active} to='/contact'>
+                CONTACT
+              </NavLink>
+            </li>
+            {!loginCtx.isloggedIn && (
+              <li className={classes.login}>
+                <NavLink activeClassName={classes.active} to='/login'>
+                  LOGIN
+                </NavLink>
+              </li>
+            )}
+            {loginCtx.isloggedIn && (
+              <li className={classes.logout} onClick={logoutHandler}>
+                <NavLink activeClassName={classes.active} to='/login'>
+                  LOGOUT
+                </NavLink>
+              </li>
+            )}
           </ul>
         </nav>
         <div>

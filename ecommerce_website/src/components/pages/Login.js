@@ -3,10 +3,12 @@ import { useHistory } from 'react-router-dom';
 
 import classes from './Login.module.css';
 import loginContext from '../store/login-context';
+import cartContext from '../store/cart-context';
 
 const Login = () => {
   const [loginAccount, setCreateAccount] = useState(true);
-  const loginCtx = useContext(loginContext);
+    const loginCtx = useContext(loginContext);
+    const cartCtx = useContext(cartContext);
   const history = useHistory();
   const email = useRef();
   const password = useRef();
@@ -44,8 +46,14 @@ const Login = () => {
       );
 
       if (res.ok) {
-        history.replace('/store');
-        const data = await res.json();
+        // history.replace('/store');
+          const data = await res.json();
+          const convertedData = JSON.stringify(data)
+          localStorage.setItem('tokenId', convertedData);
+          loginCtx.login(data);
+          history.replace('/store');
+          cartCtx.loginCartHandler();
+
         localStorage.setItem('tokenId', data.idToken);
           loginCtx.login(data.idToken);
           history.replace('/product');

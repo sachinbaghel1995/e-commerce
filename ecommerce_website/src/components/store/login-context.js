@@ -15,7 +15,8 @@ export const LoginContextProvider = (props) => {
 //   console.log(storedToken);
 //   console.log(isloggedIn);
 
-  const login = (token) => {
+    const login = (token) => {
+        console.log(token.email);
     setToken(token);
   };
 
