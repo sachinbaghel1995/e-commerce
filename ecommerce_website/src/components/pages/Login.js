@@ -3,63 +3,54 @@ import { useHistory } from 'react-router-dom';
 
 import classes from './Login.module.css';
 import loginContext from '../store/login-context';
-import cartContext from '../store/cart-context';
 
 const Login = () => {
   const [loginAccount, setCreateAccount] = useState(true);
-    const loginCtx = useContext(loginContext);
-    const cartCtx = useContext(cartContext);
   const history = useHistory();
+  const loginCtx = useContext(loginContext);
   const email = useRef();
   const password = useRef();
-    
+
   const createAccountHandler = () => {
-        setCreateAccount((previousState) => {
-          return !previousState;
-        });
-    };
+    setCreateAccount((previousState) => {
+      return !previousState;
+    });
+  };
 
   const loginHandler = async (event) => {
-      event.preventDefault();
-      
+    event.preventDefault();
+
     let url;
 
-    if(loginAccount) {
-        url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBrymEqjlFNKxnes2FHwQb1RR6h3xbm-8g';
+    if (loginAccount) {
+      url =
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCS7K7Vv7E2ypIxR1XlJUmUQklzG8H8mlI';
     } else {
-        url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBrymEqjlFNKxnes2FHwQb1RR6h3xbm-8g';
+      url =
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCS7K7Vv7E2ypIxR1XlJUmUQklzG8H8mlI';
     }
 
     try {
-      const res = await fetch(url,
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            email: email.current.value,
-            password: password.current.value,
-            returnSecureToken: true,
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const res = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({
+          email: email.current.value,
+          password: password.current.value,
+          returnSecureToken: true,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const data = await res.json();
 
       if (res.ok) {
-        // history.replace('/store');
-          const data = await res.json();
-          const convertedData = JSON.stringify(data)
-          localStorage.setItem('tokenId', convertedData);
-          loginCtx.login(data);
-          history.replace('/store');
-          cartCtx.loginCartHandler();
-
-        localStorage.setItem('tokenId', data.idToken);
-          loginCtx.login(data.idToken);
-          history.replace('/product');
-        // console.log(data);
+        history.replace('/product');
+        const convertedData = JSON.stringify(data);
+        localStorage.setItem('tokenId', convertedData);
+        loginCtx.login(data);
       } else {
-        const data = await res.json();
         throw new Error(data.error.message);
       }
     } catch (err) {
@@ -76,7 +67,7 @@ const Login = () => {
         <label htmlFor='password'>Password</label>
         <input id='password' type='password' ref={password} />
         <div>
-        <button type='submit'>
+          <button type='submit'>
             {loginAccount ? 'Login' : 'Create Account'}
           </button>
         </div>

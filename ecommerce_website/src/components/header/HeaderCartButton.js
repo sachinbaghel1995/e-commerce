@@ -1,20 +1,21 @@
-import React, { useContext }  from 'react';
+import React, { useContext } from 'react';
 
 import classes from './HeaderCartButton.module.css';
 import Cart from '../cart/Cart';
 import cartContext from '../store/cart-context';
-import showCartContext from '../store/showCart-Context';
+import showCartContext from '../store/showCart-context';
 
 const HeaderCartButton = () => {
-
   const cartCtx = useContext(cartContext);
   const showCartCtx = useContext(showCartContext);
 
   let cartQuantity = 0;
 
-  cartCtx.item.forEach((item) => {
-    cartQuantity += item.quantity;
-  });
+  if (cartCtx.item) {
+    cartCtx.item.forEach((item) => {
+      cartQuantity += item.quantity;
+    });
+  }
 
   return (
     <React.Fragment>

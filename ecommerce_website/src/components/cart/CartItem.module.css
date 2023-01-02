@@ -1,8 +1,6 @@
 .div {
   display: flex;
   justify-content: space-around;
-  /* border: 2px solid gray; */
-  /* background-color: #f4f4f4; */
   margin-top: 20px;
   margin-bottom: 20px;
   text-align: center;
@@ -12,8 +10,8 @@
 .div span {
   margin: 20px;
   font-size: 20px;
-  font-family: sans-serif;
-  flex: 18%;
+  font-family: cursive;
+  flex-basis: 18%;
   border-top: 2px solid gray;
   border-bottom: 2px solid gray;
   padding: 10px 0 10px 0;
@@ -22,13 +20,13 @@
 .div img {
   width: 100px;
   height: 100px;
-  object-fit: contain;
-  flex: 30%;
-  border: 2px solid black;
+  object-fit: cover;
+  flex-basis: 30%;
+  box-shadow: 0 0 5px #808080;
 }
 
 .div button {
-  flex: 16%;
+  flex-basis: 16%;
   margin-left: 10px;
   font-size: 20px;
 }

@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className={classes.footer}>
       <span>The Generics</span>
-      <div>
+      <div className={classes.links}>
         <a rel='noreferrer' href='https://www.youtube.com' target='_blank'>
           <img src='assets/youtube.jpg' alt='YouTube'/>
         </a>
@@ -20,5 +20,4 @@ const Footer = () => {
     </footer>
   );
 };
-
 export default Footer;

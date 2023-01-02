@@ -14,7 +14,7 @@
   display: block;
   font-size: 25px;
   font-weight: bold;
-  font-family: "Times New Roman", Times, serif;
+  font-family: cursive;
 }
 
 .form input {
@@ -23,6 +23,7 @@
   width: 96%;
   font-size: 18px;
   border-radius: 5px;
+  border-color: rgb(0, 0, 0, 0.2);
 }
 
 .form div {
@@ -35,16 +36,17 @@
   margin-top: 30px;
   padding: 5px 40px 5px 40px;
   border-radius: 25px;
-  background-color: #5ac3ed;
+  background-color: #ccc;
   border: none;
-}
-
-.form button:active {
-  transform: scale(0.95);
+  width: 50%;
 }
 
 .form button:hover {
   background-color: darkcyan;
+}
+
+.form button:active {
+  transform: scale(0.95);
 }
 
 .contact h1 {
@@ -53,5 +55,5 @@
   background-color: gray;
   font-size: 60px;
   text-align: center;
-  font-family: "Times New Roman", Times, serif;
+  font-family: cursive;
 }

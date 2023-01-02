@@ -1,21 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { CartContextProvider } from './components/store/cart-context';
-import { BrowserRouter } from 'react-router-dom';
 import { LoginContextProvider } from './components/store/login-context';
+import { CartContextProvider } from './components/store/cart-context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <LoginContextProvider>
-  <CartContextProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-    </CartContextProvider>
-  </LoginContextProvider>
+    <LoginContextProvider>
+      <CartContextProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </CartContextProvider>
+    </LoginContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

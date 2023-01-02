@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 
 import classes from './Cart.module.css';
@@ -7,18 +7,47 @@ import cartContext from '../store/cart-context';
 
 const Cart = (props) => {
 
-    const cartCtx = useContext(cartContext);
-    const cartElements = cartCtx.item;
+  let userEmail;
+  if (localStorage.getItem('tokenId')) {
+    userEmail = JSON.parse(localStorage.getItem('tokenId')).email;
+    userEmail = userEmail.replace(/[@.]/g, '');
+  }
 
-  const cartItemList = cartElements.map((item) => (
-    <CartItem key={Math.random().toString()} item={item} />
-  ));
+  const cartCtx = useContext(cartContext);
+
+  const cartElements = cartCtx.item;
+
+  let cartItemList = [];
+  let totalAmount = 0;
+
+  if (cartCtx.item) {
+    cartItemList = cartElements.map((item) => (
+      <CartItem key={Math.random().toString()} item={item} />
+    ));
+
+    totalAmount = cartCtx.totalAmount.toFixed(2);
+  }
 
   const purchaseHandler = () => {
+
+    cartCtx.item.forEach(async (item) => {
+      try {
+        await fetch(
+          `https://crudcrud.com/api/7e654949e670477aa4bd336f6651ebef/cartItem${userEmail}/${item._id}`,
+          {
+            method: 'DELETE',
+          }
+        );
+      } catch (err) {
+        console.log(err.message);
+      }
+    });
+
     cartCtx.purchased();
   };
 
-  const cartItem = 
+  const Cart = () => {
+    return (
       <div className={classes.overlay}>
         <span className={classes.title}>CART</span>
         <button className={classes.delete} onClick={props.onClick}>
@@ -32,18 +61,29 @@ const Cart = (props) => {
         {cartItemList}
         <div className={classes.total}>
           <span>Total</span>
-          <div>${cartCtx.totalAmount.toFixed(2)}</div>
+          <div>${totalAmount}</div>
         </div>
-        {cartCtx.item.length > 0 && (
+        {cartItemList.length > 0 && (
           <button className={classes.button} onClick={purchaseHandler}>
             PURCHASE
           </button>
         )}
-    </div>
-  
+      </div>
+    );
+  };
+
+  const BackDrop = () => {
+    return <div className={classes.backDrop} onClick={props.onClick}></div>;
+  };
+
   const root = document.getElementById('cartModal');
-  
-  return ReactDOM.createPortal(cartItem, root);
+
+  return (
+    <React.Fragment>
+      {ReactDOM.createPortal(<Cart />, root)}
+      {ReactDOM.createPortal(<BackDrop />, root)}
+    </React.Fragment>
+  );
 };
 
 export default Cart;

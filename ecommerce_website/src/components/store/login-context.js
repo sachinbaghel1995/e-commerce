@@ -12,18 +12,14 @@ export const LoginContextProvider = (props) => {
   const [token, setToken] = useState(storedToken);
   const isloggedIn = token ? true : false;
 
-//   console.log(storedToken);
-//   console.log(isloggedIn);
-
-    const login = (token) => {
-        console.log(token.email);
+  const login = (token) => {
     setToken(token);
   };
 
   const logout = () => {
     localStorage.removeItem('tokenId');
     setToken(null);
-  }
+  };
 
   const contextValue = {
     tokenId: token,

@@ -1,5 +1,5 @@
-import React,{useContext} from 'react';
-import { NavLink} from 'react-router-dom';
+import React, { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import classes from './Header.module.css';
 import HeaderCartButton from './HeaderCartButton';
@@ -7,21 +7,19 @@ import loginContext from '../store/login-context';
 import cartContext from '../store/cart-context';
 
 const Header = () => {
-
   const loginCtx = useContext(loginContext);
   const cartCtx = useContext(cartContext);
 
   const logoutHandler = () => {
     loginCtx.logout();
     cartCtx.logoutCartHandler();
-  }
+  };
 
   return (
     <React.Fragment>
       <header className={classes.header}>
         <nav>
           <ul>
-            {/* <li><NavLink activeClassName={classes.active} to='/login'>LOGIN</NavLink></li> */}
             <li>
               <NavLink activeClassName={classes.active} to='/home'>
                 HOME
@@ -58,8 +56,8 @@ const Header = () => {
             )}
           </ul>
         </nav>
-        <div>
-          <HeaderCartButton />
+        <div className={classes.button}>
+            <HeaderCartButton />
         </div>
       </header>
     </React.Fragment>

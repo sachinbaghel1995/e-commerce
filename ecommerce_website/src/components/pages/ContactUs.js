@@ -16,8 +16,8 @@ const ContactUs = () => {
       phoneNumber: phoneNumber.current.value,
     };
 
-      fetch(
-          'https://contactpage-eb9e5-default-rtdb.firebaseio.com//users.json',
+    fetch(
+      'https://ecom-879b0-default-rtdb.firebaseio.com/usercontacts.json',
       {
         method: 'POST',
         body: JSON.stringify(userData),
@@ -35,6 +35,7 @@ const ContactUs = () => {
   return (
     <div className={classes.contact}>
       <h1>The Generics</h1>
+
       <form className={classes.form} onSubmit={onSubmitHandler}>
         <label htmlFor='name'>Name</label>
         <input id='name' type='text' ref={name} />

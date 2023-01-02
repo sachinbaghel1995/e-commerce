@@ -3,38 +3,45 @@
   margin-bottom: 50px;
 }
 
-.div img {
-  display: block;
+.div .image {
+  height: 300px;
+  width: 300px;
+  overflow: hidden;
   margin: auto;
-  margin-bottom: 60px;
   border-radius: 20px;
+  box-shadow: 5px 5px 10px black;
+}
+
+.div img {
+  height: 100%;
+  width: 100%;
   object-fit: cover;
-  transition: transform 0.2s;
+  transition: transform 2s;
 }
 
 .div img:hover {
-  transform: scale(110%);
+  transform: scale(140%);
 }
 
-.div h3 {
+.div h2 {
   text-align: center;
   font-family: cursive;
 }
 
+.div .detail {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 40px;
+}
+
 .div span {
-  text-align: left;
   padding: 10px 20px 10px 20px;
-  border: 2px solid #56ccf2;
+  border: 2px solid lightblue;
   border-radius: 5px;
-  margin-left: -120px;
 }
 
 .div button {
-  display: inline;
-  float: right;
-  margin-right: 70px;
-  margin-bottom: 30px;
-  margin-top: -10px;
   cursor: pointer;
 }
 
