@@ -35,3 +35,7 @@
     border-radius: 5px;
 
   }
+  .logo{
+    position:absolute;
+    left: 10px;
+  }

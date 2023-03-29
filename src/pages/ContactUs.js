@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import Input from '../components/Form/Input';
+import MainNavigation from '../components/MainNavigation';
 import classes from './ContactUs.module.css'
 
 const ContactUs = () => {
@@ -26,6 +27,8 @@ const ContactUs = () => {
     }
 
   return (
+    <>
+    <MainNavigation/>
     <form onSubmit={submitHandler} className={classes.form} >
         <label>Username</label>
      <input type='text' ref = {userName} />
@@ -35,6 +38,7 @@ const ContactUs = () => {
      <input type='number' ref = {phoneNumber}/>
      <button type='submit'>Submit</button>
     </form>
+    </>
   )
 }
 

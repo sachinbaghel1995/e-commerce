@@ -6,6 +6,7 @@ return (
     
 <header className={classes.header}>
     <nav>
+      <h3 className={classes.logo}>E-commerce</h3>
         <ul className={classes.list}>
         <li><NavLink to='/products'>Home</NavLink></li>
           <li><NavLink to='/about'>About</NavLink></li>

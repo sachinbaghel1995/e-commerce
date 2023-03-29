@@ -2,12 +2,15 @@
    border: 2px solid yellow;
    border-radius:  5px;
    display: inline-block;
+   
 
 }
 .btn{
     background-color:orange;
     border-radius: 10px;
     cursor: pointer;
+    margin-left: 100px;
+    width: 100px;
 
 }
 .btn:hover{

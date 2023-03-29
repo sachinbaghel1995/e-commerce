@@ -6,6 +6,7 @@ import classes from "./ProductItem.module.css"
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { NavLink } from "react-router-dom";
 
 const ProductItem=(props)=>{
     const cartCtx = useContext(CartContext);
@@ -26,15 +27,18 @@ return (
       {Array.from({ length: 1 }).map((_, idx) => (
         <Col>
           <Card>
-          <Card.Img className={classes.image} src={props.imageUrl}/>
+          {/* <Card.Img className={classes.image} src={props.imageUrl}/> */}
           <Card.Body>
-          
+         
               <Card.Text>
+                <div className={classes.accu}>
+                  <img className={classes.image} src={props.imageUrl}/>
            <h3 className={classes.products}>{props.product}</h3>
            <div className={classes.amount}>{props.amount}</div>
            <div className={classes.price}>{props.price}</div>
-
-        <ProductForm onAddToCart={addToCartHandler}/>
+           <NavLink to='/products/:productId'>See Details</NavLink>
+           <ProductForm  className={classes.form} onAddToCart={addToCartHandler}/>
+        </div>
         </Card.Text>
             
         </Card.Body>

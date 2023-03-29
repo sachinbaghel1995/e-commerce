@@ -1,16 +1,21 @@
- .products{
+  .products{
     background-color: beige;
     width: 300px;
     text-align: center;
     border-radius: 10px;
     box-sizing: border-box;
     text-align: center;
-    align-items: center;
-    margin: auto;
+   
 }
- .price{
+  .price{
     background: lightsalmon;
     border-style: double;
     border-radius: 5px;
     display: inline-block;
-} 
+}  
+.accu{
+    position: relative;
+   
+    width: 25%;
+    margin: auto;
+}

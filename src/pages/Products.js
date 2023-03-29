@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 import Cart from "../components/Cart/Cart";
 import ProductsDetail from "../components/Form/ProductsDetail";
 import CartProvider from "../components/Context/CartProvider";
+import React from "react";
+import MainNavigation from "../components/MainNavigation";
 
 const Products = () => {
   const [showCart, setShowCart] = useState(false);
@@ -15,13 +17,14 @@ const Products = () => {
     setShowCart(false);
   };
   return (
-    <div>
+    <React.Fragment>
       <CartProvider>
+        <MainNavigation/>
         <HeaderCartButton onClick={showCartHandler} />
         {showCart && <Cart onClose={hideCartHandler} />}
         <ProductsDetail />
       </CartProvider>
-    </div>
+    </React.Fragment>
   );
 };
 export default Products;

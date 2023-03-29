@@ -1,0 +1,27 @@
+.detail{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+ 
+}
+.detail img {
+   
+    height: 300px;
+    width: 300px;
+    border: 1px solid red;
+    position: relative;
+    left: 50px;
+    top: 20px;
+}
+.heading{
+    margin-left: 150px;
+}
+.productsdetails{
+    margin-left: 150px;   
+}
+.det{
+   
+  display: contents;
+  border: 2px solid red;
+}

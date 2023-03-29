@@ -12,3 +12,7 @@ button{
     width:5%;
     margin: auto;
 }
+label{
+  align-items: center;
+  margin: auto;
+}
