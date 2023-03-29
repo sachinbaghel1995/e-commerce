@@ -1,0 +1,15 @@
+.btn{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    opacity: 2;
+    /* background: transparent; */
+    color:white;
+    width: 50px;
+    height: 30px;
+    background-color: grey;
+    border-radius: 10px;
+}
+span{
+    margin-left: 5px;
+}
