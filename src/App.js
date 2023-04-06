@@ -8,6 +8,8 @@ import About from "./pages/About";
 import Store from "./pages/Store";
 import ContactUs from "./pages/ContactUs";
 import ProductDetail from "./pages/ProductDetail";
+import Login from "./pages/Login";
+import { AuthContextProvider } from "./components/Context/Login-context";
 const productArr = [
   {
     product: "Colors",
@@ -15,6 +17,7 @@ const productArr = [
     price: "$ 100",
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+    amount:2
   },
 
   {
@@ -23,6 +26,7 @@ const productArr = [
     price: "$ 50",
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+    amount:3
   },
 
   {
@@ -31,6 +35,7 @@ const productArr = [
     price: "$ 70",
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+    amount:4
   },
 
   {
@@ -39,28 +44,17 @@ const productArr = [
     price: "$ 100",
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+    amount:5
   },
 ];
 
 
 function App() {
-  // const router = createBrowserRouter([
-  //   {
-  //     path: "/",
-  //     element: <RootLayout />,
-  //     children: [
-  //       { path: "/products", element: <Products /> },
-  //       { path: "/about", element: <About /> },
-  //       { path: "/store", element: <Store /> },
-  //       { path: "/contactus", element: <ContactUs /> }
 
-  //     ],
-  //   },
-  // ]);
   return (
     <div>
      
-      
+      <AuthContextProvider>
       <BrowserRouter>
       <Routes>
       <Route  exact path="/"
@@ -81,9 +75,13 @@ function App() {
       <Route path="/products/:productId"
       element={<ProductDetail products={productArr} />}
       />
+        <Route path="/login"
+       element={<Login />}
+      />
     
       </Routes>
       </BrowserRouter>
+      </AuthContextProvider>
     </div>
   );
 }

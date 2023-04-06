@@ -12,6 +12,7 @@ return (
           <li><NavLink to='/about'>About</NavLink></li>
           <li><NavLink to='/store'>Store</NavLink></li>
           <li><NavLink to='/contactus'>Contact Us</NavLink></li>
+          <li><NavLink to='/login'>Login</NavLink></li>
         </ul>
     </nav>
 </header>
