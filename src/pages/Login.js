@@ -1,13 +1,14 @@
 import { useContext, useRef,useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import classes from './Login.module.css'
-import { AuthContextProvider } from '../components/Context/Login-context'
+import AuthContext from '../components/Context/Login-context'
+
 
 const Login=()=>{
     const emailInputRef=useRef()
     const passwordInputRef=useRef()
     const [loginAccount, setCreateAccount] = useState(true)
-    const loginCtx=useContext(AuthContextProvider)
+    const loginCtx=useContext(AuthContext)
     const navigate =useNavigate()
 
     const createAccountHandler = () => {
@@ -46,8 +47,10 @@ const Login=()=>{
         const data = await res.json();
   
         if (res.ok) {
-          navigate('/products');
-          const convertedData = JSON.stringify(data);
+          
+        loginCtx.login(data.idToken)
+          navigate(`/products/${data.idToken}`);
+
           return res.json()
         } else {
           throw new Error(data.error.message);
