@@ -18,6 +18,13 @@ const cartReducer=(state,action)=>{
 }
 
 const CartProvider=(props)=>{
+  let userEmail;
+  if(localStorage.getItem('tokenId'))
+  {
+    userEmail = JSON.parse(localStorage.getItem('tokenId')).email;
+    userEmail = userEmail.replace(/[@.]/g, '')
+  }
+  console.log(userEmail)
   const [cartState,dispatchCartAction]=useReducer(cartReducer,defaultCartState)
 const addProductToCartHandler=(product)=>{
   dispatchCartAction({type:'Add',product:product})

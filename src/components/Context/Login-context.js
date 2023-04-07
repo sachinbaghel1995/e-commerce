@@ -29,7 +29,8 @@ import React, { useState } from 'react'
         isLoggedIn:userIsLoggedIn,
         login:loginHandler,
         logout:logoutHandler
-    }
+}
+
 
     return <AuthContext.Provider value={contextValue}>{props.children}</AuthContext.Provider>
 }
